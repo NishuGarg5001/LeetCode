@@ -1,0 +1,39 @@
+The basic idea that comes to mind is to iterate over N elements of the vector, and for each ith element iterate over
+the (i+1)th to N elements because when ith element is checked with all (i+1)th to N elements, i will be increased
+to i+1, and in that case, we don't need to compare i+1 with i because the pair (i, i+1) was already covered in the
+iteration for i. This gives an algo with time complexity O(N(N-1)/2)
+
+Initial algo:
+class Solution 
+{
+    public:
+        std::vector<int> twoSum(const std::vector<int>& nums, int target) const
+        {
+            int N = static_cast<int>(nums.size());
+            for(int i = 0; i < N; i++)
+                for(int j = i + 1; j < N; j++)
+                    if(nums[i] + nums[j] == target)
+                    {
+                        return {i, j};
+                    }
+            return {0, 1};
+        }
+};
+
+How to get O(N) time complexity !? Using a hash map!
+class Solution 
+{
+    public:
+        std::vector<int> twoSum(const std::vector<int>& nums, int target) const
+        {
+            std::unordered_map<int, int> mp;
+            for(int i = 0; i < static_cast<int>(nums.size()); i++)
+            {
+                auto j = mp.find(target - nums[i]);
+                if(j != mp.end())
+                    return {i, j->second};
+                mp[nums[i]] = i;
+            }
+            return {0, 1};
+        }
+};
