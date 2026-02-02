@@ -1,0 +1,8 @@
+Pretty straightforward problem, because the digits have been stored in an order reverse
+to how we usually view numbers, adding them is straightforward as traversing the linked lists
+For example, 330 + 12 = 342, The linked lists are
+l1 0->3->3->NULL
+l2 2->1->NULL
+and the answer returned should be
+res 2->4->3->NULL
+The only additional thing to be taken care of is carry

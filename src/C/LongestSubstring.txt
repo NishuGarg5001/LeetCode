@@ -1,0 +1,9 @@
+I should traverse the string increasing a counter everytime a new character is
+encountered and also add it to a hash map, resetting the hash map and counter everytime a previously 
+encountered character is met again (by looking it up in the hash map) and 
+update the size if it is more than previous size 
+
+add first char to hash map and counter = 1 and size = 1
+look up next char in hash map
+if not found => new char => add it to hash map, counter++
+else found => update size if counter > size and then set counter = 1, clear hash map
