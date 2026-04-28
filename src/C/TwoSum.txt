@@ -1,2 +1,0 @@
-There are no hash-maps in C. How would one approach this problem? Create a custom hash-map (oof)
-Implemented a hash table

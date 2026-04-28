@@ -1,0 +1,13 @@
+This seemed like a straightforward problem at first, but it's not really.
+I thought of somehow counting from list 1 then counting from list 2 in between,
+but really the best idea is to merge the lists into a single list.
+Because both the lists are already sorted, merging them becomes much easier.
+Initially, I thought of iterating over one list, and checking at every iteration of the 2nd list fits
+between the current element and the next element...but I soon ran into problems
+
+The correct idea is to iterate over both lists together in a while loop maintaining a pointer for each list (2 pointers),
+inserting whichever element is smaller and incrementing the pointer of that list
+
+The loop breaks when one list is exhausted
+Afterwards, the remaining portion of the non-exhausted list can be pushed without checking
+because the remaining elements will always be >= the elements pushed earlier

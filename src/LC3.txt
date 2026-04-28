@@ -1,0 +1,30 @@
+Quite a difficult problem, uses the concept of sliding window.
+Move from left to right and add each unique character to either a map,
+or use an array for 256 unique characters initialized with -1, & update positons of characters
+
+Initially, start is 0 and every character's position is -1, so start will always be greater than
+position of any character
+
+As long as unique characters are found, start will never update because every unique character
+starts with an invalid position (-1) and the position is only updated after checking if start can be updated
+
+When a duplicate character is found, it already has a valid position.
+If start is behind or equal to this old position, it is brought in front of it (last_seen(s[i])+1) and
+this moves the sliding window's left end forward. This will always be the case for the very first duplicate value found.
+
+When second duplicate value is found, it can be duplicate of the first duplicate itself 
+(for example, "carabazl" duplicate of "a" came two times)
+In this case, the sliding window's left end again moves ahead of last known position of duplicate (bazl)
+But, if this second duplicate value found is of some other letter, it has to be checked if this position
+is before start or not
+(for example, "carpolpzak" --> In this case, the sliding window moves like
+[c]->[ca]->[car]->[carp]->[carpo]->[carpol]->[olp]->[olpz]->?)
+Now, the second duplicate value found, is a duplicate of a, which was last encountered way earlier, and we don't want
+our sliding window to now become, [rpolpz], which is wrong. So, it is important to check that the last known position
+of the character whose duplicate is encounter is >= start, otherwise no change and as in our example the window would proceed as
+[olpz]->[olpza]->[olpzak]
+So, in total
+[c]->[ca]->[car]->[carp]->[carpo]->[carpol]->[olp]->[olpz]->[olpza]->[olpzak]
+Everytime the length of the sliding window increases, the string inside the sliding window is recorded
+result = "c" -> "ca" -> "car" -> "carp" -> "carpo" -> "carpol" --x--> not updated to "olpzak" because
+the length has to be strictly greater
