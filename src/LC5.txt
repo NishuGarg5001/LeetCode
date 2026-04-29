@@ -1,0 +1,4 @@
+The brute force solution was straightforward to implement. A small optimization was needed for the Python
+code to get accepted, as it was hitting run time limit on leetcode.
+
+I may try to optimize the solution in future.
